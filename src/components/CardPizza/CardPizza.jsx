@@ -15,12 +15,12 @@ export default function CardPizza(props) {
           <ListGroup className="list-group-flush">
             <ListGroup.Item>Ingredientes</ListGroup.Item>
             <ListGroup.Item>{props.ingredients.join(", ")}</ListGroup.Item>
-            <ListGroup.Item>{props.price.toLocaleString("es-CL")}</ListGroup.Item>
+            <ListGroup.Item>${props.price.toLocaleString("es-CL")}</ListGroup.Item>
           </ListGroup>
           <Card.Body>
           <div className="d-flex gap-2">
           <Button variant="outline-secondary">Ver más</Button>
-            <Button variant="primary">Añadir</Button>
+            <Button variant="primary"  style={{backgroundColor : "#FF8C00", border: "none",}}>Añadir</Button>
             </div>
           </Card.Body>
 

@@ -75,7 +75,6 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faPhone} />
                 <p>+568 8874 5964</p>
 
-                {/* Contenedor de Redes Sociales (estáticas) */}
                 <div className="flex justify-center lg:justify-start mt-4">
                   {/* Facebook */}
                   <a
@@ -111,10 +110,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        {/* Separador */}
         <hr className="my-6 border-gray-600" />
 
-        {/* Sección de Copyright */}
         <section className="py-3">
           <div className="text-center">
             <div className="text-sm">
