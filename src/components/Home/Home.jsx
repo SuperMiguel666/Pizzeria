@@ -2,7 +2,7 @@ import React from "react";
 import CardPizza from "../CardPizza/CardPizza";
 import "./home.css";
 
-export default function Home() {
+function Home() {
   return (
     <>
     <div className="containerCards">
@@ -28,3 +28,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

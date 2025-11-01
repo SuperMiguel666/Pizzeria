@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import React from 'react'
 
-export default function CustomNavbar() {
+function CustomNavbar() {
   const total = 25000;
   const totalPrecio = total.toLocaleString('es-ES');
   const token = false;
@@ -32,3 +32,5 @@ export default function CustomNavbar() {
     </>
   )
 }
+
+export default CustomNavbar;

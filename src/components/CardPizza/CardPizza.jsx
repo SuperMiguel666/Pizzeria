@@ -4,7 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from 'react-bootstrap/Button';
 import "./cardpizza.css";
 
-export default function CardPizza(props) {
+function CardPizza(props) {
    return (
       <>
         <Card style={{ width: "18rem" }}>
@@ -28,3 +28,5 @@ export default function CardPizza(props) {
       </>
     );
 }
+
+export default CardPizza;

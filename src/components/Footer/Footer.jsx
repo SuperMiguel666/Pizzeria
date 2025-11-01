@@ -11,7 +11,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-export default function Footer() {
+function Footer() {
   return (
     <>
       <footer className="text-center lg:text-left text-white rounded-xl shadow-2xl bg-dark">
@@ -130,3 +130,5 @@ export default function Footer() {
     </>
   );
 }
+
+export default Footer;

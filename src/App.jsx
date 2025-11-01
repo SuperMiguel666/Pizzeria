@@ -6,16 +6,20 @@ import Header from './components/Header/Header'
 import CustomNavbar from './components/CustomNavbar/CustomNavbar'
 import Home from './components/Home/Home'
 import Footer from './components/Footer/Footer'
+import LoginPage from './pages/LoginPage/LoginPage'
+import RegisterPage from './pages/RegisterPage/RegisterPage'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <CustomNavbar></CustomNavbar>
+      {/* <CustomNavbar></CustomNavbar>
       <Header></Header>
-      <Home></Home>
-      <Footer></Footer>
+      <Home></Home> */}
+      {/* Hito número 2 */}
+      {/* <RegisterPage></RegisterPage> */}
+      <LoginPage></LoginPage>
+      {/* <Footer></Footer> */}
     </>
   )
 }
