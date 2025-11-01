@@ -22,12 +22,12 @@ function LoginPage() {
       return;
     }
 
-    if (password.length < 8) {
-      setErrorMessage("La contraseña debe tener al menos 8 caracteres");
+    if (password.length < 6) {
+      setErrorMessage("La contraseña debe tener al menos 6 caracteres");
       return;
     }
 
-    if (password === "12345678") {
+    if (password === "123456") {
       setSuccessMessage("¡Ingreso exitoso!");
       setEmail("");
       setPassword("");
