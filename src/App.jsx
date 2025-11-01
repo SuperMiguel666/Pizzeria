@@ -17,8 +17,8 @@ function App() {
       {/* <Header></Header> */}
       {/* <Home></Home> */}
       {/* Hito número 2 */}
-      <RegisterPage></RegisterPage>
-      {/* <LoginPage></LoginPage> */}
+      {/* <RegisterPage></RegisterPage> */}
+      <LoginPage></LoginPage>
       <Footer></Footer>
     </>
   )

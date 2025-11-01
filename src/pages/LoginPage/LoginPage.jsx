@@ -39,7 +39,7 @@ function LoginPage() {
 
   return (
     <>
-      <div className="container sm mt-5">
+      <div className="container sm my-5">
         <h3>Login</h3>
         <Form onSubmit={validarDatos}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
