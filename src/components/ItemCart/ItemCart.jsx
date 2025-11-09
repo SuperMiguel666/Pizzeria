@@ -7,6 +7,16 @@ import Button from 'react-bootstrap/Button';
 
 
 function ItemCart(props) {
+const { 
+    img, 
+    name, 
+    price, 
+    id, 
+    quantity, 
+    handleAddition, 
+    handleSubstract,
+  } = props;
+
   return (
     <div> 
        
@@ -19,9 +29,9 @@ function ItemCart(props) {
         <Col>
         <Container>
         <Row>
-            <Col><Button variant="primary">+</Button></Col>
-            <Col><p>Cantidad: </p></Col>
-            <Col><Button variant="danger">-</Button></Col>
+            <Col><Button variant="primary" onClick={() => handleAddition(id)} >+</Button></Col>
+            <Col><p>Cantidad: {props.quantity} </p></Col>
+            <Col><Button variant="danger" onClick={() => handleSubstract(id)}>-</Button></Col>
             </Row>
 
         </Container>
