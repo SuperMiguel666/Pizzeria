@@ -5,8 +5,8 @@ import './header.css';
 function Header() {
   return (
     <div className='header'>
-      <h1>Mamma Mía</h1>
-      <p>¡la vera pizza a la pietra!</p>
+      <h1>Mamma Mía Pizzería</h1>
+      <p>De Italia con Amor!</p>
     </div>
   )
 }

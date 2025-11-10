@@ -23,7 +23,7 @@ function Footer() {
                   Mamma Mía Pizzería
                 </h6>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-sm mx-auto lg:mx-0">
-                  La vera pizza a la pietra... 
+                  De Italia con Amor 
                   <br />
                   ¡Directamente en tu casa!
                 </p>
@@ -53,7 +53,7 @@ function Footer() {
                     href="#"
                     className="text-white hover:text-indigo-400 transition-colors duration-300 text-sm"
                   >
-                    Providencia
+                    La Florida
                   </a>
                 </p>
                 <p className="mb-2">
@@ -71,9 +71,9 @@ function Footer() {
                 <h6 className="uppercase mb-4 font-semibold">Contacto</h6>
                 {/* Contacto */}
                 <FontAwesomeIcon icon={faEnvelope} />
-                <p>mammamiapizzeria@gmail.com</p>
+                <p>mammamia@pizzeria.com</p>
                 <FontAwesomeIcon icon={faPhone} />
-                <p>+568 8874 5964</p>
+                <p>+569 6290 4224</p>
 
                 <div className="flex justify-center lg:justify-start mt-4">
                   {/* Facebook */}
