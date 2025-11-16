@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,8 +9,24 @@ import Footer from './components/Footer/Footer'
 import LoginPage from './pages/LoginPage/LoginPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
 import Cart from './components/Cart/Cart'
+import Pizza from './components/Pizza/Pizza'
 
 function App() {
+
+const [infoPizza, setInfoPizza] = useState(null);
+
+  useEffect(() => {
+  consultarApi();
+  }, []);
+
+  const consultarApi = async () => {
+  const url = "http://localhost:5000/api/pizzas/p001";
+  const response = await fetch(url);
+  const data = await response.json();
+  setInfoPizza(data);
+  };
+
+
 
   return (
     <>
@@ -23,9 +39,11 @@ function App() {
 
 
       {/* Hito número 3 */}
-      <Home></Home>
-      <Cart></Cart>
+      {/* <Home></Home> */}
+      {/* <Cart></Cart> */}
 
+      {/* Hito número 4 */}
+      {infoPizza && <Pizza pizzaData={infoPizza}></Pizza>}
       <Footer></Footer>
     </>
   )
