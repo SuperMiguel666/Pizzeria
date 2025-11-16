@@ -7,7 +7,7 @@ function Pizza({ pizzaData }) {
   const { name, price, desc, img, ingredients } = pizzaData;
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card className="m-5" style={{ width: "18rem" }}>
         <Card.Img variant="top" src={img} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
