@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"; 
-import CardPizza from "../CardPizza/CardPizza";
+import CardPizza from "../../components/CardPizza/CardPizza.jsx";
 import "./home.css";
 import {pizzas} from "../../js/pizzas.js";
-import Pizza from "../Pizza/Pizza";
+import Pizza from "../Pizza/Pizza.jsx";
 
 function Home() {
   

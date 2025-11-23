@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; // 👈 Corregido: Importar useState
 import { pizzaCart } from "../../js/pizzas.js";
-import ItemCart from '../ItemCart/ItemCart.jsx';
+import ItemCart from '../../components/ItemCart/ItemCart.jsx';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
