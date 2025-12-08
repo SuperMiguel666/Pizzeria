@@ -1,0 +1,18 @@
+.containerCards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 70%;
+    margin: 30px auto;
+    justify-content: center;
+    gap: 20px;
+    justify-items: center;
+;}
+
+@media (width <= 1024px) { 
+    .containerCards{
+        grid-template-columns: 1fr;
+        max-width: 90%;
+        justify-items: center;
+        row-gap: 20px;
+    }
+}
