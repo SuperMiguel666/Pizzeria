@@ -3,10 +3,13 @@
     "email": "test@test.com",
     "password": "123123",
     "id": "UYz_2Vy9rNw7uELQ7AZ8D"
+<<<<<<< HEAD
   },
   {
     "email": "ejemplo@ejemplo.com",
     "password": "123123",
     "id": "lBqBFlrvZ92a_LJrgx9eu"
+=======
+>>>>>>> fc6496ec22be95e168897e5e224d2a8fbc4ac85e
   }
 ]

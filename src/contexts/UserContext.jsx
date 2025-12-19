@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 // Archivo: ../../contexts/UserContext.jsx
 
 import React, { createContext, useState, useEffect } from 'react';
+=======
+import { createContext, useState } from 'react';
+>>>>>>> fc6496ec22be95e168897e5e224d2a8fbc4ac85e
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+<<<<<<< HEAD
     const [token, setToken] = useState(localStorage.getItem('token') || null);
     const [email, setEmail] = useState(localStorage.getItem('email') || null);
     const [profile, setProfile] = useState(null);
@@ -169,3 +174,27 @@ export const UserProvider = ({ children }) => {
         </UserContext.Provider>
     );
 };
+=======
+    
+    const loggedOutFlag = sessionStorage.getItem('isLoggedOut') === 'true';
+    const initialToken = !loggedOutFlag;
+    
+    const [token, setToken] = useState(initialToken); 
+
+    const logout = () => {
+        setToken(false); 
+        sessionStorage.setItem('isLoggedOut', 'true');
+    }
+
+    const login = () => {
+        setToken(true); 
+        sessionStorage.removeItem('isLoggedOut');
+    }
+
+    return (
+        <UserContext.Provider value={{ token, login, logout }}>
+            {children}
+        </UserContext.Provider>
+    );
+}
+>>>>>>> fc6496ec22be95e168897e5e224d2a8fbc4ac85e
