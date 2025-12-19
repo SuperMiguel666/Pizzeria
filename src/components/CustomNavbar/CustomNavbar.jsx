@@ -1,9 +1,8 @@
+import React, { useContext } from "react"; 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom"; 
-import Button from 'react-bootstrap/Button';
 import { CartContext } from "../../contexts/CartContext";
 import { UserContext } from "../../contexts/UserContext";
 
@@ -15,17 +14,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function CustomNavbar() {
+  
   const { total } = useContext(CartContext);
-  const { token, logout } = useContext(UserContext);
+  const { token, logout, email } = useContext(UserContext);
   const navigate = useNavigate(); 
   
   const totalPrecio = total.toLocaleString("es-ES");
   
   const handleLogout = () => {
-    // 🚨 1. NAVEGA PRIMERO
-    navigate('/'); 
-    // 2. LUEGO EJECUTA EL LOGOUT
     logout();
+    navigate('/'); 
   }
   
   return (
@@ -47,7 +45,7 @@ function CustomNavbar() {
                     icon={faUser}
                     className="w-4 h-4 text-gray-400"
                   />
-                  Profile
+                  {email ? email : 'Profile'}
                 </Link>
                 <Nav.Link href="#logout" onClick={handleLogout}>🔒 Logout</Nav.Link>
               </>
@@ -70,17 +68,16 @@ function CustomNavbar() {
             <Link to="/404" className="text-white text-decoration-none gap-1 align-items-center">
               + Más info
             </Link>
-            <Button className="ml-5">
               <Link
                 to="/cart"
-                className="text-white text-decoration-none"
+                className="text-white text-decoration-none ml-5"
               >
-                <FontAwesomeIcon
+                <FontAwesomeIcon  
                   icon={faBasketShopping}
                   className="w-4 h-4 text-gray-400"
                 /> {(total || 0).toLocaleString("es-CL")}
               </Link>
-            </Button>
+            
           </Nav>
         </Container>
       </Navbar>

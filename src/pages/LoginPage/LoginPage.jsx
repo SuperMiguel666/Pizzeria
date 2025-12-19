@@ -15,74 +15,85 @@ function LoginPage() {
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const validarDatos = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setErrorMessage(null);
     setSuccessMessage(null);
 
     if (!email.trim() || !password.trim()) {
-      setErrorMessage("Todos los campos son obligatorios");
+      setErrorMessage("Todos los campos son obligatorios.");
       return;
     }
 
     if (password.length < 6) {
-      setErrorMessage("La contraseña debe tener al menos 6 caracteres");
+      setErrorMessage("La contraseña debe tener al menos 6 caracteres.");
       return;
     }
 
-    if (password === "123456") {
-      
-      login(); 
-      
-      setSuccessMessage("¡Ingreso exitoso! Redirigiendo...");
+    try {
+      await login(email, password);
+      setSuccessMessage(
+        "¡Ingreso exitoso! Redirigiendo a la página principal..."
+      );
       setEmail("");
       setPassword("");
-      
       setTimeout(() => {
-        navigate("/"); 
+        navigate("/");
       }, 1000);
-      
-      return;
+    } catch (error) {
+      console.error("Error en el login:", error.message);
+      setErrorMessage(`Error al iniciar sesión: ${error.message}`);
     }
-    setErrorMessage("La contraseña es incorrecta");
-    return;
   };
 
   return (
     <>
+      {" "}
       <div className="container sm my-5">
-        <h3>Login</h3>
-        <Form onSubmit={validarDatos}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <h3>Login</h3> {" "}
+        <Form onSubmit={handleSubmit}>
+          {" "}
+          <Form.Group className="mb-3" controlId="emailInput">
             <Form.Label>Email address</Form.Label>
+            {" "}
             <Form.Control
               type="email"
               placeholder="name@example.com"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
+            {" "}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          {" "}
+          <Form.Group className="mb-3" controlId="passwordInput">
             <Form.Label>Contraseña</Form.Label>
+            {" "}
             <Form.Control
               type="password"
               placeholder="Contraseña"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
+           {" "}
           </Form.Group>
+          {" "}
           {errorMessage && (
             <AlertsMessage message={errorMessage} variant="danger" />
           )}
+          {" "}
           {successMessage && (
             <AlertsMessage message={successMessage} variant="success" />
           )}
+          {" "}
           <Button variant="primary" type="submit">
-            Enviar
+           Enviar {" "}
           </Button>
+          {" "}
         </Form>
+        {" "}
       </div>
+      {" "}
     </>
   );
 }

@@ -3,95 +3,116 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AlertsMessage from "../../components/Alerts/AlertsMessage";
 import { useState } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
+    const [localError, setLocalError] = useState(null);
 
+    const { register, loading, authError, setAuthError } = useContext(UserContext);
+    const navigate = useNavigate();
 
- const validarDatos = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setErrorMessage(null);
-        setSuccessMessage(null);
+        setLocalError(null);
+        setAuthError(null);
 
         if (
             !email.trim() ||
             !password.trim() ||
             !confirmPassword.trim()
         ) {
-            setErrorMessage("Todos los campos son obligatorios"); 
+            setLocalError("Todos los campos son obligatorios"); 
             return;
         }
 
         if (password !== confirmPassword) {
-            setErrorMessage("Las contraseñas no coinciden");
+            setLocalError("Las contraseñas no coinciden");
             return;
         }
 
         if (password.length < 6) {
-        setErrorMessage("La contraseña debe tener al menos 6 caracteres");
-        return; 
+            setLocalError("La contraseña debe tener al menos 6 caracteres");
+            return; 
         }
 
-        setSuccessMessage("¡Registro exitoso!");
+        if (localError) return;
 
-        
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+
+        try {
+            await register(email, password); 
+
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+
+            setTimeout(() => {
+                navigate('/profile'); 
+            }, 1000);
+
+        } catch (error) {
+            console.error("Error capturado por el componente:", error.message);
+        }
     };
 
-  return (
-    <>
-      <div className="container sm my-5">
-        <h3>Register</h3>
-        <Form onSubmit={validarDatos}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="name@example.com"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Contraseña"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Confirme Contraseña"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              value={confirmPassword}
-            />
-          </Form.Group>
-          {errorMessage && <AlertsMessage message={errorMessage} variant="danger"/>}
-          {successMessage && <AlertsMessage message={successMessage} variant="success" />}
-
-          <Button variant="primary" type="submit">
-            Enviar
-          </Button>
-          
-        </Form>
-        <hr />
-        <h5>Correo ingresado :</h5>
-        {email}
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="container sm my-5">
+                <h3>Register</h3>
+                <Form onSubmit={handleSubmit}>
+                                        
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="name@example.com"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="passwordInput">
+                        <Form.Label>Contraseña</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Contraseña"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="confirmPasswordInput">
+                        <Form.Label>Confirme Contraseña</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Confirme Contraseña"
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            value={confirmPassword}
+                            required
+                        />
+                    </Form.Group>
+                    
+                    {(authError || localError) && (
+                         <AlertsMessage message={authError || localError} variant="danger"/>
+                    )}
+                    
+                    <Button variant="primary" type="submit" disabled={loading}>
+                        {loading ? 'Registrando...' : 'Enviar'}
+                    </Button>
+                    
+                </Form>
+                <hr />
+                <h5>Correo ingresado :</h5>
+                {email}
+            </div>
+        </>
+    );
 }
 
 export default RegisterPage;
